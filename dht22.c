@@ -1,8 +1,9 @@
 /*
  *      dht22.c:
- *	Simple test program to test the wiringPi functions
+ *	Simple test program to test the wiringX functions
  *	Based on the existing dht11.c
  *	Amended by technion@lolware.net
+ *  Adapted for wiringX by philipp@uisa.ch
  */
 
 #include <wiringX.h>
@@ -19,18 +20,22 @@
 static int DHTPIN = 1;
 static int dht22_dat[5] = {0,0,0,0,0};
 
+//#define DEBUG 
+
 static void nullprint(int prio, const char *format_str, ...) {
 
 }
 
 static uint8_t sizecvt(const int read)
 {
-  /* digitalRead() and friends from wiringpi are defined as returning a value
+  /* digitalRead() and friends from wiringX are defined as returning a value
   < 256. However, they are returned as int() types. This is a safety function */
 
   if (read > 255 || read < 0)
   {
-    //printf("Invalid data from wiringPi library\n");
+    #ifdef DEBUG
+      printf("Invalid data from wiringX library\n");
+    #endif
     exit(EXIT_FAILURE);
   }
   return (uint8_t)read;
@@ -92,13 +97,14 @@ static int read_dht22_dat()
         if ((dht22_dat[2] & 0x80) != 0)  t *= -1;
 
 
-    //printf("Humidity = %.2f %% Temperature = %.2f *C \n", h, t );
     printf("{\"humidity\":\"%.2f\",\"temperature\":\"%.2f\"}\n", h, t );
     return 1;
   }
   else
   {
-    //printf("Data not good, skip\n");
+    #ifdef DEBUG
+      printf("Data not good, skip\n");
+    #endif
     return 0;
   }
 }
@@ -110,7 +116,9 @@ int main (int argc, char *argv[])
   int tries = 30;
 
   if (argc < 2) {
-    /*printf ("usage: %s <pin> (<tries>)\ndescription: pin is the wiringPi pin number\nusing 7 (GPIO 4)\nOptional: tries is the number of times to try to obtain a read (default 100)",argv[0]);*/
+    #ifdef DEBUG
+      printf ("usage: %s <pin> (<tries>)\ndescription: pin is the wiringX pin number\nusing 4 (GPIO 72)\nOptional: tries is the number of times to try to obtain a read (default 100)",argv[0]);
+    #endif
   }
   else
     DHTPIN = atoi(argv[1]);
@@ -118,12 +126,13 @@ int main (int argc, char *argv[])
 
   if (argc == 3)
     tries = atoi(argv[2]);
-
+#ifdef DEBUG
+  else
+    printf("Set tries to default %i", tries);
+#endif
   if (tries < 1) {
     exit(EXIT_FAILURE);
   }
-
-  //printf ("Raspberry Pi wiringPi DHT22 reader\nwww.lolware.net\n") ;
 
   lockfd = open_lockfile(LOCKFILE);
 
