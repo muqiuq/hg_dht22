@@ -24,6 +24,7 @@ AS_IF([test "x$enable_secure" != "xno"], [
 
 
 AC_HEADER_STDC
+<<<<<<< HEAD
 AC_CHECK_HEADER(wiringX,wiringx_h_found=yes)
 AS_IF([test x$wiringx_h_found != "xyes"],
 	AC_CHECK_HEADER([/usr/local/include/wiringX.h],
@@ -33,6 +34,17 @@ AS_IF([test x$wiringx_h_found != "xyes"],
 )
 
 AC_CHECK_LIB(wiringX, wiringXSetup,,AC_MSG_ERROR(Fail to find wiringX library))
+=======
+AC_CHECK_HEADER(wiringPi,wiringpi_h_found=yes)
+AS_IF([test x$wiringpi_h_found != "xyes"],
+	AC_CHECK_HEADER([/usr/local/include/wiringPi.h],
+		CFLAGS="${CFLAGS} -I/usr/local/include",
+		AC_MSG_ERROR(Fail to find wiringPi.h)
+	)
+)
+
+AC_CHECK_LIB(wiringPi, wiringPiSetup,,AC_MSG_ERROR(Fail to find wiringPi library))
+>>>>>>> e3656bfd5c9676408f741b62e4bcb78bb4722a59
 
 AC_OUTPUT(Makefile)
 

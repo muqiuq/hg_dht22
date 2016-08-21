@@ -3,8 +3,13 @@
 /* Define to 1 if you have the <inttypes.h> header file. */
 #undef HAVE_INTTYPES_H
 
+<<<<<<< HEAD
 /* Define to 1 if you have the `wiringX' library (-lwiringX). */
 #undef HAVE_LIBWIRINGX
+=======
+/* Define to 1 if you have the `wiringPi' library (-lwiringPi). */
+#undef HAVE_LIBWIRINGPI
+>>>>>>> e3656bfd5c9676408f741b62e4bcb78bb4722a59
 
 /* Define to 1 if you have the <memory.h> header file. */
 #undef HAVE_MEMORY_H

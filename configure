@@ -4058,6 +4058,7 @@ fi
 done
 
 
+<<<<<<< HEAD
 ac_fn_c_check_header_mongrel "$LINENO" "wiringX" "ac_cv_header_wiringX" "$ac_includes_default"
 if test "x$ac_cv_header_wiringX" = xyes; then :
   wiringx_h_found=yes
@@ -4070,6 +4071,20 @@ if test "x$ac_cv_header__usr_local_include_wiringX_h" = xyes; then :
   CFLAGS="${CFLAGS} -I/usr/local/include"
 else
   as_fn_error $? "Fail to find wiringX.h" "$LINENO" 5
+=======
+ac_fn_c_check_header_mongrel "$LINENO" "wiringPi" "ac_cv_header_wiringPi" "$ac_includes_default"
+if test "x$ac_cv_header_wiringPi" = xyes; then :
+  wiringpi_h_found=yes
+fi
+
+
+if test x$wiringpi_h_found != "xyes"; then :
+  ac_fn_c_check_header_mongrel "$LINENO" "/usr/local/include/wiringPi.h" "ac_cv_header__usr_local_include_wiringPi_h" "$ac_includes_default"
+if test "x$ac_cv_header__usr_local_include_wiringPi_h" = xyes; then :
+  CFLAGS="${CFLAGS} -I/usr/local/include"
+else
+  as_fn_error $? "Fail to find wiringPi.h" "$LINENO" 5
+>>>>>>> e3656bfd5c9676408f741b62e4bcb78bb4722a59
 
 fi
 
@@ -4077,6 +4092,7 @@ fi
 
 fi
 
+<<<<<<< HEAD
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for wiringXSetup in -lwiringX" >&5
 $as_echo_n "checking for wiringXSetup in -lwiringX... " >&6; }
 if ${ac_cv_lib_wiringX_wiringXSetup+:} false; then :
@@ -4084,6 +4100,15 @@ if ${ac_cv_lib_wiringX_wiringXSetup+:} false; then :
 else
   ac_check_lib_save_LIBS=$LIBS
 LIBS="-lwiringX  $LIBS"
+=======
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for wiringPiSetup in -lwiringPi" >&5
+$as_echo_n "checking for wiringPiSetup in -lwiringPi... " >&6; }
+if ${ac_cv_lib_wiringPi_wiringPiSetup+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lwiringPi  $LIBS"
+>>>>>>> e3656bfd5c9676408f741b62e4bcb78bb4722a59
 cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
 
@@ -4093,24 +4118,39 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 #ifdef __cplusplus
 extern "C"
 #endif
+<<<<<<< HEAD
 char wiringXSetup ();
 int
 main ()
 {
 return wiringXSetup ();
+=======
+char wiringPiSetup ();
+int
+main ()
+{
+return wiringPiSetup ();
+>>>>>>> e3656bfd5c9676408f741b62e4bcb78bb4722a59
   ;
   return 0;
 }
 _ACEOF
 if ac_fn_c_try_link "$LINENO"; then :
+<<<<<<< HEAD
   ac_cv_lib_wiringX_wiringXSetup=yes
 else
   ac_cv_lib_wiringX_wiringXSetup=no
+=======
+  ac_cv_lib_wiringPi_wiringPiSetup=yes
+else
+  ac_cv_lib_wiringPi_wiringPiSetup=no
+>>>>>>> e3656bfd5c9676408f741b62e4bcb78bb4722a59
 fi
 rm -f core conftest.err conftest.$ac_objext \
     conftest$ac_exeext conftest.$ac_ext
 LIBS=$ac_check_lib_save_LIBS
 fi
+<<<<<<< HEAD
 { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_wiringX_wiringXSetup" >&5
 $as_echo "$ac_cv_lib_wiringX_wiringXSetup" >&6; }
 if test "x$ac_cv_lib_wiringX_wiringXSetup" = xyes; then :
@@ -4122,6 +4162,19 @@ _ACEOF
 
 else
   as_fn_error $? "Fail to find wiringX library" "$LINENO" 5
+=======
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_wiringPi_wiringPiSetup" >&5
+$as_echo "$ac_cv_lib_wiringPi_wiringPiSetup" >&6; }
+if test "x$ac_cv_lib_wiringPi_wiringPiSetup" = xyes; then :
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBWIRINGPI 1
+_ACEOF
+
+  LIBS="-lwiringPi $LIBS"
+
+else
+  as_fn_error $? "Fail to find wiringPi library" "$LINENO" 5
+>>>>>>> e3656bfd5c9676408f741b62e4bcb78bb4722a59
 fi
 
 
