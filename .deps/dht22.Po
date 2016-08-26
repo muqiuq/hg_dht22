@@ -35,7 +35,11 @@ dht22.o: dht22.c /usr/local/include/wiringX.h /usr/include/errno.h \
  /usr/include/unistd.h /usr/include/arm-linux-gnueabihf/bits/posix_opt.h \
  /usr/include/arm-linux-gnueabihf/bits/environments.h \
  /usr/include/arm-linux-gnueabihf/bits/confname.h /usr/include/getopt.h \
- /usr/include/arm-linux-gnueabihf/bits/unistd.h locking.h
+ /usr/include/arm-linux-gnueabihf/bits/unistd.h /usr/include/sched.h \
+ /usr/include/arm-linux-gnueabihf/bits/sched.h /usr/include/string.h \
+ /usr/include/xlocale.h /usr/include/arm-linux-gnueabihf/bits/string.h \
+ /usr/include/arm-linux-gnueabihf/bits/string2.h \
+ /usr/include/arm-linux-gnueabihf/bits/string3.h locking.h
 
 /usr/local/include/wiringX.h:
 
@@ -142,5 +146,19 @@ dht22.o: dht22.c /usr/local/include/wiringX.h /usr/include/errno.h \
 /usr/include/getopt.h:
 
 /usr/include/arm-linux-gnueabihf/bits/unistd.h:
+
+/usr/include/sched.h:
+
+/usr/include/arm-linux-gnueabihf/bits/sched.h:
+
+/usr/include/string.h:
+
+/usr/include/xlocale.h:
+
+/usr/include/arm-linux-gnueabihf/bits/string.h:
+
+/usr/include/arm-linux-gnueabihf/bits/string2.h:
+
+/usr/include/arm-linux-gnueabihf/bits/string3.h:
 
 locking.h:

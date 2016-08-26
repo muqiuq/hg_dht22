@@ -1,8 +1,8 @@
 /*
  *      dht22.c:
- *	Simple test program to test the wiringX functions
- *	Based on the existing dht11.c
- *	Amended by technion@lolware.net
+ *  Simple test program to test the wiringX functions
+ *  Based on the existing dht11.c
+ *  Amended by technion@lolware.net
  *  Adapted for wiringX by philipp@uisa.ch
  */
 
@@ -13,6 +13,8 @@
 #include <stdint.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <sched.h>
+#include <string.h>
 
 #include "locking.h"
 
@@ -24,6 +26,14 @@ static int dht22_dat[5] = {0,0,0,0,0};
 
 static void nullprint(int prio, const char *format_str, ...) {
 
+}
+
+void set_max_priority(void) {
+  struct sched_param sched;
+  memset(&sched, 0, sizeof(sched));
+  // Use FIFO scheduler with highest priority for the lowest chance of the kernel context switching.
+  sched.sched_priority = sched_get_priority_max(SCHED_FIFO);
+  sched_setscheduler(0, SCHED_FIFO, &sched);
 }
 
 static uint8_t sizecvt(const int read)
@@ -111,6 +121,7 @@ static int read_dht22_dat()
 
 int main (int argc, char *argv[])
 {
+  set_max_priority();
   wiringXLog = nullprint;
   int lockfd;
   int tries = 30;
@@ -138,7 +149,7 @@ int main (int argc, char *argv[])
 
   if (wiringXSetup () == -1)
     exit(EXIT_FAILURE) ;
-	
+  
   if (setuid(getuid()) < 0)
   {
     perror("Dropping privileges failed\n");
